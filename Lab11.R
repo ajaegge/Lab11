@@ -20,7 +20,7 @@ f <- list.files(pattern=".nc",full.names=F) #What pattern can you use to identif
 
 f
 
-#d <- plyr::adply(f, 1, function(file) {
+d <- plyr::adply(f, 1, function(file) {
 
 #open netCDF file
 data<-nc_open(file)
@@ -31,7 +31,7 @@ lat<- ncvar_get(data, "lat")# get the latitude
 tmp.array <- ncvar_get(data, var)
 dunits <- ncatt_get(data, var, "units")$value
 fillvalue <- -999 #set the fill value for cells with no data
-
+summary(tmp.array)
 dim(tmp.array)
 
 # remove the missing data
@@ -55,9 +55,9 @@ day <- format(as.Date(datemean, "%Y-%m-%dT%H:%M:%OSZ"), "%d")# get the day
   
 # prepare final data set. Include the day (it is missing in the code below)
 dat.varSA<-data.frame(rep(as.integer(year,nrow(dat.varSAtmp))), rep(as.integer(month,nrow(dat.varSAtmp))), 
-                      rep(as.integer(day,nrow(dat.varSAtmp))), dat.varSAtmp, rep(dunits,nrow(dat.varSAtmp)), 
-                      rep(var, nrow(dat.varSAtmp)))
-names(dat.varSA)<-c("year","month","day","lon","value","unit","var")
+                      rep(as.integer(day,nrow(dat.varSAtmp))), dat.varSAtmp$lon, dat.varSAtmp$lat, 
+                      dat.varSAtmp$value, rep(dunits,nrow(dat.varSAtmp)), rep(var, nrow(dat.varSAtmp)))
+names(dat.varSA)<-c("year","month","day","lon","lat", "value","unit","var")
 
 # close connection
 nc_close(data)
@@ -71,5 +71,5 @@ d <- d[,-1]
 #save csv
 
 summary(d)
-write.table(d, "chl_a.txt", sep="\t", row.names=FALSE)
-write.table(summary(d), "chl_a.txt", sep="\t", row.names=FALSE)
+write.table(d, "Lab11_chl_a.txt", sep="\t", row.names=FALSE)
+write.table(summary(d), "Lab11_chl_a_summary.txt", sep="\t", row.names=FALSE)
