@@ -11,7 +11,7 @@ latmax <- -98.2 #left eastern coordinate
 latmin <- -80.9#right western coordinate
 
 # identify the variable you want to extract data for
-var <-"chl_a"
+var <-"chlor_a"
 
 #list netCDF files
 f <- list.files("/Users/andreajaegge/Desktop/Lab11/chlor_a",pattern=".nc",full.names=F) #What pattern can you use to identify all the netCDF files?
@@ -20,4 +20,12 @@ f <- list.files("/Users/andreajaegge/Desktop/Lab11/chlor_a",pattern=".nc",full.n
 
 #open netCDF file
 data<-nc_open(file.choose('A2017291.L3m_DAY_CHL_chlor_a_4km.nc'), write = FALSE)
+
+# extract data
+lon<-ncvar_get(data,"lon")
+lat<- ncvar_get(data, "lat")# get the latitude
+tmp.array <- ncvar_get(data, var)
+dunits <- ncatt_get(data, var, "units")$value
+fillvalue <-NA #set the fill value for cells with no data
+  
 
