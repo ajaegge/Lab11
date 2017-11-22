@@ -12,3 +12,7 @@ latmin <- -80.9#right western coordinate
 
 # identify the variable you want to extract data for
 var <-"chl_a"
+
+#list netCDF files
+f <- list.files("/Users/andreajaegge/Desktop/chlor_a",pattern=".nc",full.names=F) #What pattern can you use to identify all the netCDF files?
+
