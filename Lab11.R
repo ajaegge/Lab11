@@ -26,7 +26,7 @@ lon<-ncvar_get(data,"lon")
 lat<- ncvar_get(data, "lat")# get the latitude
 tmp.array <- ncvar_get(data, var)
 dunits <- ncatt_get(data, var, "units")$value
-fillvalue <-NA #set the fill value for cells with no data
+fillvalue <- -999 #set the fill value for cells with no data
   
 dim(tmp.array)
 
@@ -39,7 +39,7 @@ dat.var<-melt(tmp.array,id="lon")
 
 
 # select data from the study area
-dat.varSAtmp<-subset(dat.var, lon<=lonmax & lon>=lonmin & lat<=latmax & lat>=latmin)
+dat.varSAtmp<-subset(dat.var, lon>=lonmax & lon<=lonmin & lat<=latmax & lat>=latmin)
 
 # extract date information
 dateini<-ncatt_get(data,0,"time_coverage_start")$value
