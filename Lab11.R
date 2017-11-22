@@ -50,6 +50,7 @@ month <- format(as.Date(datemean, "%Y-%m-%dT%H:%M:%OSZ"), "%m") # get the month
 day <- format(as.Date(datemean, "%Y-%m-%dT%H:%M:%OSZ"), "%d")# get the day
   
 # prepare final data set. Include the day (it is missing in the code below)
-dat.varSA<-data.frame(rep(as.integer(year,nrow(dat.varSAtmp))),rep(as.integer(month,nrow(dat.varSAtmp))), dat.varSAtmp, rep(dunits,nrow(dat.varSAtmp)), rep(var, nrow(dat.varSAtmp)))
+dat.varSA<-data.frame(rep(as.integer(year,nrow(dat.varSAtmp))),rep(as.integer(month,nrow(dat.varSAtmp))), dat.varSAtmp, rep(dunits,nrow(dat.varSAtmp)), 
+                      rep(var, nrow(dat.varSAtmp)))
 names(dat.varSA)<-c("year","month","day","lon","value","unit","var")
 
