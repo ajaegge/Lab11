@@ -45,8 +45,11 @@ dat.varSAtmp<-subset(dat.var, lon<=lonmax & lon>=lonmin & lat<=latmax & lat>=lat
 dateini<-ncatt_get(data,0,"time_coverage_start")$value
 dateend<-ncatt_get(data,0,"time_coverage_end")$value
 datemean<-mean(c(as.Date(dateend,"%Y-%m-%dT%H:%M:%OSZ"),as.Date(dateini,"%Y-%m-%dT%H:%M:%OSZ")))
-year <-  # get the year
-month <-  # get the month
-day - # get the day
+year <- format(as.Date(datemean, "%Y-%m-%dT%H:%M:%OSZ"), "%Y") # get the year
+month <- format(as.Date(datemean, "%Y-%m-%dT%H:%M:%OSZ"), "%m") # get the month
+day <- format(as.Date(datemean, "%Y-%m-%dT%H:%M:%OSZ"), "%d")# get the day
   
+# prepare final data set. Include the day (it is missing in the code below)
+dat.varSA<-data.frame(rep(as.integer(year,nrow(dat.varSAtmp))),rep(as.integer(month,nrow(dat.varSAtmp))), dat.varSAtmp, rep(dunits,nrow(dat.varSAtmp)), rep(var, nrow(dat.varSAtmp)))
+names(dat.varSA)<-c("year","month","day","lon","value","unit","var")
 
