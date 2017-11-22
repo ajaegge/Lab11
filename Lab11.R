@@ -28,4 +28,7 @@ tmp.array <- ncvar_get(data, var)
 dunits <- ncatt_get(data, var, "units")$value
 fillvalue <-NA #set the fill value for cells with no data
   
+dim(tmp.array)
 
+# remove the missing data
+tmp.array[tmp.array == fillvalue] <- NA
