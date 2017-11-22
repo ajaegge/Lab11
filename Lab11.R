@@ -32,3 +32,14 @@ dim(tmp.array)
 
 # remove the missing data
 tmp.array[tmp.array == fillvalue] <- NA
+
+#  matrix to data.frame
+dimnames(tmp.array)<-list(lon=lon,lat=lat)
+dat.var<-melt(tmp.array,id="lon")
+
+
+# select data from the study area
+dat.varSAtmp<-subset(dat.var, lon<=lonmax & lon>=lonmin & lat<=latmax & lat>=latmin)
+
+
+
