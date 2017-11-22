@@ -41,5 +41,12 @@ dat.var<-melt(tmp.array,id="lon")
 # select data from the study area
 dat.varSAtmp<-subset(dat.var, lon<=lonmax & lon>=lonmin & lat<=latmax & lat>=latmin)
 
-
+# extract date information
+dateini<-ncatt_get(data,0,"time_coverage_start")$value
+dateend<-ncatt_get(data,0,"time_coverage_end")$value
+datemean<-mean(c(as.Date(dateend,"%Y-%m-%dT%H:%M:%OSZ"),as.Date(dateini,"%Y-%m-%dT%H:%M:%OSZ")))
+year <-  # get the year
+month <-  # get the month
+day - # get the day
+  
 
