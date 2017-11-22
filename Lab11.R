@@ -14,5 +14,10 @@ latmin <- -80.9#right western coordinate
 var <-"chl_a"
 
 #list netCDF files
-f <- list.files("/Users/andreajaegge/Desktop/chlor_a",pattern=".nc",full.names=F) #What pattern can you use to identify all the netCDF files?
+f <- list.files("/Users/andreajaegge/Desktop/Lab11/chlor_a",pattern=".nc",full.names=F) #What pattern can you use to identify all the netCDF files?
+
+#d <- plyr::adply(f, 1, function(file) {
+
+#open netCDF file
+data<-nc_open(file.choose('A2017291.L3m_DAY_CHL_chlor_a_4km.nc'), write = FALSE)
 
