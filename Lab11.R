@@ -5,10 +5,10 @@ library(ncdf4)
 library(reshape2)
 
 #set study area
-lonmax <- 30.7 #top northern most coordinate
-lonmin <-17.9 #bott0m southern coordinate
-latmax <- -98.2 #left eastern coordinate
-latmin <- -80.9#right western coordinate
+lonmax <- -98.2 #top northern most coordinate
+lonmin <- -80.9 #bott0m southern coordinate
+latmax <- 30.7 #left eastern coordinate
+latmin <- 17.9#right western coordinate
 
 # identify the variable you want to extract data for
 var <-"chlor_a"
@@ -50,7 +50,9 @@ month <- format(as.Date(datemean, "%Y-%m-%dT%H:%M:%OSZ"), "%m") # get the month
 day <- format(as.Date(datemean, "%Y-%m-%dT%H:%M:%OSZ"), "%d")# get the day
   
 # prepare final data set. Include the day (it is missing in the code below)
-dat.varSA<-data.frame(rep(as.integer(year,nrow(dat.varSAtmp))),rep(as.integer(month,nrow(dat.varSAtmp))), dat.varSAtmp, rep(dunits,nrow(dat.varSAtmp)), 
+dat.varSA<-data.frame(rep(as.integer(year,nrow(dat.varSAtmp))), rep(as.integer(month,nrow(dat.varSAtmp))), 
+                      rep(as.integer(day,nrow(dat.varSAtmp))), dat.varSAtmp, rep(dunits,nrow(dat.varSAtmp)), 
                       rep(var, nrow(dat.varSAtmp)))
+
 names(dat.varSA)<-c("year","month","day","lon","value","unit","var")
 
