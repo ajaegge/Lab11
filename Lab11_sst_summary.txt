@@ -1,0 +1,7 @@
+"   OBJECTID","   pointid","  grid_code","   POINT_X","   POINT_Y"
+"Min.   :    1  ","Min.   :    1  ","Min.   :20.21  ","Min.   :-98.14  ","Min.   :18.41  "
+"1st Qu.: 9958  ","1st Qu.: 9958  ","1st Qu.:27.46  ","1st Qu.:-93.89  ","1st Qu.:23.20  "
+"Median :19915  ","Median :19915  ","Median :28.04  ","Median :-90.22  ","Median :25.53  "
+"Mean   :21798  ","Mean   :21798  ","Mean   :27.83  ","Mean   :-90.12  ","Mean   :25.42  "
+"3rd Qu.:31808  ","3rd Qu.:31808  ","3rd Qu.:28.47  ","3rd Qu.:-86.55  ","3rd Qu.:27.83  "
+"Max.   :59330  ","Max.   :59330  ","Max.   :29.93  ","Max.   :-81.01  ","Max.   :30.66  "
